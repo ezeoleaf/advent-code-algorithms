@@ -8,11 +8,7 @@ import (
 	"time"
 )
 
-const (
-	tree      = "#"
-	stepRight = 3
-	stepDown  = 1
-)
+const tree = "#"
 
 type stepConf struct {
 	StepRight int
