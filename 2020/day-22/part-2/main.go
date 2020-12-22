@@ -13,6 +13,7 @@ import (
 type game struct {
 	finalDeck []int
 	score     int
+	winner    int
 }
 
 func main() {
@@ -61,9 +62,9 @@ func run() int {
 		}
 	}
 
-	w := g.playGame(deck1, deck2)
+	g.winner = g.playGame(deck1, deck2)
 
-	return g.calculateScore(w)
+	return g.calculateScore()
 }
 
 func (g *game) playGame(deck1, deck2 []int) int {
@@ -137,7 +138,7 @@ func (g *game) playGame(deck1, deck2 []int) int {
 	return winner
 }
 
-func (g *game) calculateScore(w int) int {
+func (g *game) calculateScore() int {
 	score := 0
 
 	total := len(g.finalDeck)
@@ -146,7 +147,7 @@ func (g *game) calculateScore(w int) int {
 		total--
 	}
 
-	fmt.Printf("The winner is %v with a score of %v\n", w, score)
+	fmt.Printf("The winner is %v with a score of %v\n", g.winner, score)
 
 	return score
 }
